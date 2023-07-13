@@ -1,5 +1,6 @@
 <?php
 
+use Yazdan\User\Mail\VerifyCodeMail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+// Route::get('/a', function () {
+//     return new VerifyCodeMail();
+// });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,10 +2,12 @@
 
 namespace Yazdan\User\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Yazdan\User\Requests\VerifyCodeRequest;
+use Yazdan\User\Services\VerifyMailService;
 use Illuminate\Foundation\Auth\VerifiesEmails;
-use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
@@ -37,7 +39,6 @@ class VerificationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
@@ -46,6 +47,20 @@ class VerificationController extends Controller
         return $request->user()->hasVerifiedEmail()
                         ? redirect($this->redirectPath())
                         : view('User::front.verify');
+    }
+
+    public function verify(VerifyCodeRequest $request)
+    {
+
+        if(! VerifyMailService::check($request->verify_code))
+        {
+            return back()->withErrors(['verify_code' => 'کد نامعتبر می باشد']);
+        }
+
+        auth()->user()->markEmailAsVerified();
+        return redirect(route('home'));
+
+
     }
 
 }

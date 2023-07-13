@@ -85,9 +85,9 @@ jQuery.fn.activationCodeInput = function (options) {
         })
 
         $(document).on('click touchstart', function (e) {
-            console.log(e.target);
-            console.log($(e.target).parent());
-            console.log($(e.target).parent().parent());
+            // console.log(e.target);
+            // console.log($(e.target).parent());
+            // console.log($(e.target).parent().parent());
             // false true = false
             // true false = false
             // false false = false

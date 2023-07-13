@@ -1,28 +1,49 @@
 @extends('User::front.master')
-
+@section('script')
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/activation-code.js"></script>
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+<main>
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
+    <div class="account act">
+        <form action="{{route('verification.verify')}}" class="form" method="post">
+            @csrf
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
+            <a class="account-logo" href="/">
+                <img src="/img/weblogo.png" alt="">
+            </a>
+            @if (session('resent'))
+            <div class="alert alert-success" role="alert">
+                {{ __('A fresh verification code has been sent to your email address.') }}
             </div>
-        </div>
+            @endif
+            <div class="card-header">
+                <p class="activation-code-title">کد فرستاده شده به ایمیل <span>{{auth()->user()->email}}</span>
+                    را وارد کنید . ممکن است ایمیل به پوشه spam فرستاده شده باشد
+                </p>
+            </div>
+            <div class="form-content form-content1">
+                <input name="verify_code" required
+                    class="activation-code-input @error('verify_code') is-invalid @enderror" placeholder="فعال سازی">
+                @error('verify_code')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                <br>
+                <button class="btn i-t">تایید</button>
+
+                <a href="#" onclick="
+                event.preventDefault();
+                document.getElementById('resend-code').submit();
+                ">ارسال مجدد</a>
+            </div>
+            <div class="form-footer">
+                <a href="{{route('register')}}">صفحه ثبت نام</a>
+            </div>
+        </form>
+        <form id="resend-code" action="{{route('verification.resend')}}" method="post">@csrf</form>
     </div>
-</div>
+</main>
 @endsection

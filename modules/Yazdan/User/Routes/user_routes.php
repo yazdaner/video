@@ -1,6 +1,7 @@
 <?php
 
 use Yazdan\User\Models\User;
+use Yazdan\User\Http\Controllers\Auth\VerificationController;
 
 
 Route::group([
@@ -8,7 +9,5 @@ Route::group([
     'middleware' => 'web'
 ],function(){
     Auth::routes(['verify' => true]);
-    Route::get('/test',function(){
-        User::factory()->create();
-    });
+    Route::post('/email/verify',[VerificationController::class,'verify'])->name('verification.verify');
 });
