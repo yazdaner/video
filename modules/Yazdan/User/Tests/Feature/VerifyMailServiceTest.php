@@ -1,7 +1,7 @@
 <?php
 
 use Tests\TestCase;
-use Yazdan\User\Models\User;
+use Yazdan\User\App\Models\User;
 use Yazdan\User\Services\VerifyMailService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -22,7 +22,7 @@ class VerifyMailServiceTest extends TestCase
     {
         $user = User::factory()->create();
         $code = VerifyMailService::generateCode();
-        VerifyMailService::cacheSet($user->id,$code);
+        VerifyMailService::cacheSet($user->id,$code,120);
         $this->assertEquals($code,VerifyMailService::cacheGet($user->id));
     }
 

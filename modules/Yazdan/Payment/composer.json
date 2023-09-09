@@ -1,0 +1,15 @@
+{
+    "name" : "yazdan/payment",
+    "autoload" : {
+        "psr-4" : {
+            "Yazdan\\Payment\\" : "src"
+        }
+    },
+    "extra": {
+        "laravel" : {
+            "providers" : [
+                "Yazdan\\Payment\\App\\Providers\\PaymentServiceProvider"
+            ]
+        }
+    }
+}

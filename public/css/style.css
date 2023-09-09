@@ -629,8 +629,8 @@ a, span {
 }
 
 .card-body img {
-    width: 23px;
-    height: 23px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;;
     margin-left: 5px;
     border: 1px solid #ddd;
@@ -1615,32 +1615,33 @@ footer {
     align-items: center;
 }
 
-.episodes-list-item:hover {
+.episodes-list-item:hover , .episodes-list-item.active{
     background: #46b2f0;
     border-top: 1px solid #ddd;
 
 }
 
-.episodes-list-item:hover .episodes-list-title a {
+.episodes-list-item:hover .episodes-list-title a , .episodes-list-item.active .episodes-list-title a {
     color: #fff !important;
 }
 
-.episodes-list-item:hover .detail-time, .episodes-list-item:hover .detail-type {
+.episodes-list-item:hover .detail-time, .episodes-list-item:hover .detail-type , .episodes-list-item.active .detail-time , .episodes-list-item.active .detail-type{
     background: #fff !important;
     color: #444;
 }
 
-.episodes-list-item:hover .detail-download i {
+.episodes-list-item:hover .detail-download i , .episodes-list-item.active .detail-download i {
     border-color: #fff !important;
 }
 
-.episodes-list-item:hover .detail-download i::before {
+.episodes-list-item:hover .detail-download i::before , .episodes-list-item.active .detail-download i::before{
     background: #fff !important;
 }
 
-.episodes-list-item:hover .detail-download i::after {
+.episodes-list-item:hover .detail-download i::after , .episodes-list-item.active .detail-download i::after {
     border-top: solid 0.33rem #fff !important;
 }
+
 
 .dark-mode .episodes-list-item:hover {
     background: #0c3d8c !important;
@@ -2495,13 +2496,7 @@ footer {
 }
 
 .user-menu-account-dropdown ul li:nth-child(3):before {
-    content: "\E083";
-    font-size: .78em;
-}
-
-.user-menu-account-dropdown ul li:nth-child(4):before {
     content: "\e10b";
-    /*margin-right: 2px;*/
 }
 
 .user-menu-account-dropdown ul li:hover {
@@ -3570,6 +3565,8 @@ textarea {
     width: 100%;
     height: 100%;
     font-size: 0;
+    border-radius: 100%;
+
 }
 
 .tutor--avatar--img {
@@ -3674,3 +3671,28 @@ textarea {
  } .mrt-170{
      margin-top:170px;
  }
+
+ .d-flex{
+    display: flex !important;
+}
+
+.text-white{
+    color: white !important;
+}
+
+
+.text-dark{
+    color: black !important;
+}
+.tabled th {
+    display: block;
+    margin-left: 100px;
+}
+
+.text-red{
+    color: #fd3955;
+}
+
+.text-green{
+    color: #67da84;
+}

@@ -6,12 +6,18 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "barryvdh/laravel-debugbar": "3.*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.5",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "3.x"
+        "laravel/ui": "3.x",
+        "spatie/laravel-permission": "^5.10",
+        "yazdan/common": "dev-master",
+        "yazdan/front": "dev-master",
+        "yazdan/payment": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
@@ -27,7 +33,13 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Yazdan\\User\\": "modules/Yazdan/User/"
+            "Yazdan\\User\\": "modules/Yazdan/User/",
+            "Yazdan\\Dashboard\\": "modules/Yazdan/Dashboard/",
+            "Yazdan\\Category\\": "modules/Yazdan/Category/",
+            "Yazdan\\RolePermissions\\": "modules/Yazdan/RolePermissions/",
+            "Yazdan\\Course\\": "modules/Yazdan/Course/",
+            "Yazdan\\Media\\": "modules/Yazdan/Media/",
+            "Yazdan\\Home\\": "modules/Yazdan/Home/"
         }
     },
     "autoload-dev": {
@@ -35,6 +47,20 @@
             "Tests\\": "tests/"
         }
     },
+    "repositories" : [
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Common"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Front"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Payment"
+        }
+    ],
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

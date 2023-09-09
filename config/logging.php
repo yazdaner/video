@@ -54,6 +54,12 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'emails' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/emails/' . now()->format('Y_m_d_').now()->timestamp .'_'. uniqid() . '.html'),
+            'level' => 'debug',
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),

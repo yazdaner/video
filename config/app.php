@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tehran',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
 
-        /*
+         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -174,7 +174,17 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        \Yazdan\User\Providers\UserServiceProvider::class
+
+        /*
+         * Module Service Providers...
+         */
+        Yazdan\RolePermissions\App\Providers\RoleServiceProvider::class,
+        Yazdan\User\App\Providers\UserServiceProvider::class,
+        Yazdan\Dashboard\App\Providers\DashboardServiceProvider::class,
+        Yazdan\Category\App\Providers\CategoryServiceProvider::class,
+        Yazdan\Course\App\Providers\CourseServiceProvider::class,
+        Yazdan\Media\App\Providers\MediaServiceProvider::class,
+        Yazdan\Home\App\Providers\HomeServiceProvider::class,
 
     ],
 
@@ -230,7 +240,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

@@ -1,5 +1,5 @@
 @component('mail::message')
-# کد :
+# کد ثبت نام:
 
 @component('mail::panel')
 {{$code}}

@@ -3,7 +3,7 @@
 namespace Yazdan\User\Tests\Feature;
 
 use Tests\TestCase;
-use Yazdan\User\Models\User;
+use Yazdan\User\App\Models\User;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -18,6 +18,7 @@ class LoginTest extends TestCase
      */
     public function test_user_can_login_with_email()
     {
+        $this->withoutExceptionHandling();
         $password = 'ASdeafd#2$safe';
 
         $user = User::factory()->state(['password' => bcrypt($password)])->create()->toArray();

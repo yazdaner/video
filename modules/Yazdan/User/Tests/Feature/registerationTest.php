@@ -5,7 +5,8 @@ namespace Yazdan\User\Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Yazdan\User\Models\User;
+use Yazdan\User\App\Models\User;
+use Yazdan\User\Services\VerifyMailService;
 
 class registerationTest extends TestCase
 {
@@ -46,6 +47,22 @@ class registerationTest extends TestCase
         ->get(route('home'));
 
         $response->assertRedirect(route('verification.notice'));
+    }
+
+    public function test_user_can_verify_account()
+    {
+        $user = User::factory()->unverified()->create();
+        auth()->loginUsingId($user->id);
+        $this->assertAuthenticated();
+
+        $code = VerifyMailService::generateCode();
+        VerifyMailService::cacheSet($user->id,$code,120);
+
+        $this->post(route('verification.verify'),[
+            'verify_code' => $code
+        ]);
+
+       $this->assertTrue($user->fresh()->hasVerifiedEmail());
     }
 
     public function test_verified_user_can_see_home_page()

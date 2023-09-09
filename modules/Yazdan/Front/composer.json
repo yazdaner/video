@@ -1,0 +1,15 @@
+{
+    "name" : "yazdan/front",
+    "autoload" : {
+        "psr-4" : {
+            "Yazdan\\Front\\" : "src"
+        }
+    },
+    "extra": {
+        "laravel" : {
+            "providers" : [
+                "Yazdan\\Front\\App\\Providers\\FrontServiceProvider"
+            ]
+        }
+    }
+}
