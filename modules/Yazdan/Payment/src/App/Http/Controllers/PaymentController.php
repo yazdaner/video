@@ -50,6 +50,15 @@ class PaymentController extends Controller
         $todaySell = $paymentRepository->lastNDaysSuccessTotal(-1);
         $thisWeekSell = $paymentRepository->lastNDaysSuccessTotal(-7);
         $last30Days = CarbonPeriod::create(now()->addDays(-30),now());
-        return view('Payment::admin.index',compact('payments','last30DaysTotal','totalSell','todaySell','thisWeekSell','last30Days','paymentRepository'));
+
+
+        $dates = collect();
+        foreach (range(-30, 0) as $i) {
+            $dates->put(now()->addDays($i)->format("Y-m-d"), 0);
+        }
+        $successSummery =  $paymentRepository->getSuccessDailySummery($dates);
+        $failSummery =  $paymentRepository->getFailDailySummery($dates);
+
+        return view('Payment::admin.index',compact('payments','last30DaysTotal','totalSell','todaySell','thisWeekSell','last30Days','paymentRepository','dates','successSummery','failSummery'));
     }
 }

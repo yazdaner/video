@@ -112,7 +112,9 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 <script>
+    let query = [@foreach($dates as $date => $value) @if($day = $successSummery->where("date", $date)->first()) {{ $day->totalAmount }}, @else 0, @endif @endforeach];
     Highcharts.chart('container', {
     title: {
             text: 'نمودار فروش 30 روز گذشته'
@@ -125,7 +127,7 @@
             direction : 'rtl',
         },
         formatter : function(){
-            return (this.x ? "تاریخ: " +  this.x + "<br>" : "")  + "مبلغ: " + this.y
+            return (this.x ? "تاریخ: " +  this.x + "<br>" : "")  + "مبلغ: " + number_format(this.y) + ' تومان'
 
         }
 
@@ -165,16 +167,17 @@
     series: [{
         type: 'column',
         name: 'تراکنش موفق',
-        data: [@foreach ($last30Days as $day){{$paymentRepository->getDaySuccessPaymentsTotal($day)}}, @endforeach]
+        data: query
+
     },
     {
         type: 'column',
         name: 'تراکنش ناموفق',
-        data: [@foreach ($last30Days as $day){{$paymentRepository->getDayFailPaymentsTotal($day)}}, @endforeach]
+        data: [@foreach($dates as $date => $value) @if($day = $failSummery->where("date", $date)->first()) {{ $day->totalAmount }}, @else 0, @endif @endforeach]
     },{
         type: 'spline',
         name: 'فروش',
-        data: [@foreach($last30Days as $day) {{ $paymentRepository->getDaySuccessPaymentsTotal($day) }}, @endforeach],
+        data: query,
         marker: {
             lineWidth: 2,
             lineColor: Highcharts.getOptions().colors[3],

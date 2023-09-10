@@ -2,6 +2,8 @@
 
 namespace Yazdan\Payment\Repositories;
 
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Yazdan\Payment\App\Models\Payment;
 
 class PaymentRepository
@@ -110,9 +112,26 @@ class PaymentRepository
     }
 
 
-    public function getDailySummery()
+    public function getSuccessDailySummery(Collection $dates)
     {
-        # code...
+        return Payment::query()->where('status','success')->where("created_at", ">=", $dates->keys()->first())
+        ->groupBy("date")
+        ->orderBy("date")
+        ->get([
+            DB::raw("DATE(created_at) as date"),
+            DB::raw("SUM(amount) as totalAmount"),
+        ]);
+    }
+
+    public function getFailDailySummery(Collection $dates)
+    {
+        return Payment::query()->where('status','fail')->where("created_at", ">=", $dates->keys()->first())
+        ->groupBy("date")
+        ->orderBy("date")
+        ->get([
+            DB::raw("DATE(created_at) as date"),
+            DB::raw("SUM(amount) as totalAmount"),
+        ]);
     }
 
 }
