@@ -2,13 +2,14 @@
 
 namespace Yazdan\Payment\App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Carbon\CarbonPeriod;
+use Illuminate\Http\Request;
+use Morilog\Jalali\Jalalian;
+use App\Http\Controllers\Controller;
 use Yazdan\Payment\Gateways\Gateway;
+use Yazdan\Payment\App\Models\Payment;
 use Yazdan\Payment\Repositories\PaymentRepository;
 use Yazdan\Payment\App\Events\PaymentWasSuccessful;
-use Yazdan\Payment\App\Models\Payment;
 
 class PaymentController extends Controller
 {
@@ -40,11 +41,16 @@ class PaymentController extends Controller
         return redirect()->to($payment->paymentable->path());
     }
 
-    public function index(PaymentRepository $paymentRepository)
+    public function index(PaymentRepository $paymentRepository, Request $request)
     {
-
         $this->authorize('index',Payment::class);
-        $payments = $paymentRepository->paginate();
+        $payments = $paymentRepository
+            ->searchEmail($request->email)
+            ->searchAmount($request->amount)
+            ->searchInvoiceId($request->invoice_id)
+            ->searchAfterDate(dateFromJalali($request->start_date))
+            ->searchBeforeDate(dateFromJalali($request->end_date))
+            ->paginate();
         $last30DaysTotal = $paymentRepository->lastNDaysSuccessTotal(-30);
         $totalSell = $paymentRepository->lastNDaysSuccessTotal();
         $todaySell = $paymentRepository->lastNDaysSuccessTotal(-1);

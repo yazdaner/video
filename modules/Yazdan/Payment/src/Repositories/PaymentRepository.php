@@ -13,6 +13,11 @@ class PaymentRepository
     const CONFIRMATION_STATUS_FAIL = 'fail';
     static $confirmationStatuses = [self::CONFIRMATION_STATUS_SUCCESS, self::CONFIRMATION_STATUS_PENDING, self::CONFIRMATION_STATUS_FAIL];
 
+    private $query;
+    public function __construct()
+    {
+        $this->query = Payment::query();
+    }
 
     public function store($data)
     {
@@ -44,11 +49,61 @@ class PaymentRepository
 
     }
 
-    public function paginate()
+
+
+
+    public function searchEmail($email)
     {
-        return Payment::query()->latest()->paginate();
+        if (!is_null($email)) {
+            $this->query->join("users", "payments.user_id", 'users.id')->select("payments.*", "users.email")->where("email", "like", "%" . $email . "%");
+        }
+
+        return $this;
     }
 
+
+    public function searchAmount($amount)
+    {
+        if (!is_null($amount)) {
+            $this->query->where("amount",  $amount);
+        }
+
+        return $this;
+    }
+
+
+    public function searchInvoiceId($invoiceId)
+    {
+        if (!is_null($invoiceId)) {
+            $this->query->where("invoice_id", "like", "%" .  $invoiceId . "%");
+        }
+
+        return $this;
+    }
+
+
+    public function searchAfterDate($date)
+    {
+        if (!is_null($date)) {
+            $this->query->whereDate("created_at", ">=", $date);
+        }
+
+        return $this;
+    }
+
+    public function searchBeforeDate($date)
+    {
+        if (!is_null($date)) {
+            $this->query->whereDate("created_at", "<=", $date);
+        }
+
+        return $this;
+    }
+
+    public function paginate()
+    {
+        return $this->query->latest()->paginate();
+    }
 
 
     public function lastNDaysPayments(string $status,$days = null)
@@ -133,6 +188,10 @@ class PaymentRepository
             DB::raw("SUM(amount) as totalAmount"),
         ]);
     }
+
+
+
+
 
 }
 

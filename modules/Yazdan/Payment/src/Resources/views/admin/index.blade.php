@@ -45,19 +45,18 @@
 
 
     <div class="d-flex flex-space-between item-center flex-wrap padding-30 border-radius-3 bg-white">
-        <p class="margin-bottom-15">همه تراکنش ها</p>
+       <a class="btn btn-webamooz_net" href="{{route('admin.payments.index')}}">همه تراکنش ها</a>
         <div class="t-header-search">
-            <form action="" onclick="event.preventDefault();">
+            <form>
                 <div class="t-header-searchbox font-size-13">
                     <input type="text" class="text search-input__box font-size-13" placeholder="جستجوی تراکنش">
                     <div class="t-header-search-content " style="display: none;">
-                        <input type="text" class="text" placeholder="شماره کارت / بخشی از شماره کارت">
-                        <input type="text" class="text" placeholder="ایمیل">
-                        <input type="text" class="text" placeholder="مبلغ به تومان">
-                        <input type="text" class="text" placeholder="شماره">
-                        <input type="text" class="text" placeholder="از تاریخ : 1399/10/11">
-                        <input type="text" class="text margin-bottom-20" placeholder="تا تاریخ : 1399/10/12">
-                        <btutton class="btn btn-webamooz_net">جستجو</btutton>
+                        <input type="text"  class="text" name="email" value="{{ request("email") }}"  placeholder="ایمیل">
+                        <input type="text"  class="text" name="amount"  value="{{ request("amount") }}" placeholder="مبلغ به تومان">
+                        <input type="text"  class="text" name="invoice_id" value="{{ request("invoice_id") }}" placeholder="شماره تراکنش">
+                        <input type="text"  class="text" name="start_date" value="{{ request("start_date") }}" placeholder="از تاریخ : 1402/6/18">
+                        <input type="text" class="text margin-bottom-20" name="end_date" value="{{ request("end_date") }}"  placeholder="تا تاریخ : 1402/6/18">
+                        <button class="btn btn-webamooz_net" type="submit">جستجو</button>
                     </div>
                 </div>
             </form>
@@ -133,7 +132,7 @@
 
     },
     xAxis: {
-        categories: [@foreach ($last30Days as $day)"{{$day->format('Y/m/d')}}", @endforeach]
+        categories: [@foreach ($last30Days as $day)"{{getJalaliFromFormat($day->format('Y/m/d'))}}", @endforeach]
     },
     yAxis: {
         title: {
