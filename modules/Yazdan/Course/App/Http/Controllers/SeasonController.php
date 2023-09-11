@@ -19,7 +19,7 @@ class SeasonController extends Controller
         $course = CourseRepository::findById($courseId);
         $this->authorize('createSeason', $course);
         SeasonRepository::store($request, $courseId);
-        newFeedbackes();
+        newFeedbacks();
         return back();
     }
 
@@ -37,7 +37,7 @@ class SeasonController extends Controller
         $this->authorize('edit', $season);
 
         SeasonRepository::update($request, $id);
-        newFeedbackes();
+        newFeedbacks();
         return redirect()->route('admin.courses.details', $season->course->id);
     }
 

@@ -40,7 +40,7 @@ class UserController extends Controller
         UserRepository::upload($request,$userId);
         UserRepository::update($request,$userId);
 
-        newFeedbackes();
+        newFeedbacks();
         return redirect()->route('admin.users.index');
     }
 
@@ -61,7 +61,7 @@ class UserController extends Controller
     {
         $this->authorize('addRole',User::class);
         $user->assignRole($request->role);
-        newFeedbackes('با موفقیت',"نقش مورد نظر به کاربر {$user->name} داده شد",'success');
+        newFeedbacks('با موفقیت',"نقش مورد نظر به کاربر {$user->name} داده شد",'success');
         return redirect()->route('admin.users.index');
     }
 
@@ -88,7 +88,7 @@ class UserController extends Controller
         if(auth()->user()->avatar) auth()->user()->avatar->delete();
         auth()->user()->avatar_id = $image->id;
         auth()->user()->save();
-        newFeedbackes();
+        newFeedbacks();
         return back();
     }
 
@@ -102,7 +102,7 @@ class UserController extends Controller
     {
         $this->authorize('profile',User::class);
         UserRepository::updateProfile($request);
-        newFeedbackes();
+        newFeedbacks();
         return back();
     }
 

@@ -33,7 +33,7 @@ class LessonController extends Controller
             $request->request->add(['media_id' => MediaFileService::privateUpload($request->file('lesson_file'))->id]);
         }
         LessonRepository::store($request, $courseId);
-        newFeedbackes();
+        newFeedbacks();
         return redirect()->route('admin.courses.details', $courseId);
     }
 
@@ -62,7 +62,7 @@ class LessonController extends Controller
             if($lesson->media) $request->request->add(['media_id' => $lesson->media->id]);
         }
         LessonRepository::update($id,$request);
-        newFeedbackes();
+        newFeedbacks();
         return redirect()->route('admin.courses.details', $lesson->course->id);
     }
 

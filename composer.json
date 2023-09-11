@@ -17,6 +17,7 @@
         "morilog/jalali": "3.*",
         "spatie/laravel-permission": "^5.10",
         "yazdan/common": "dev-master",
+        "yazdan/discount": "dev-master",
         "yazdan/front": "dev-master",
         "yazdan/payment": "dev-master"
     },
@@ -60,6 +61,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Payment"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Discount"
         }
     ],
     "scripts": {

@@ -51,7 +51,7 @@ class CourseController extends Controller
             $request->request->add(['banner_id' => $images->id]);
         }
         CourseRepository::store($request);
-        newFeedbackes();
+        newFeedbacks();
         return redirect(route('admin.courses.index'));
     }
 
@@ -88,7 +88,7 @@ class CourseController extends Controller
             }
         }
         CourseRepository::update($id, $request);
-        newFeedbackes();
+        newFeedbacks();
         return redirect(route('admin.courses.index'));
     }
 
@@ -150,7 +150,7 @@ class CourseController extends Controller
         $amount = $course->finalPrice();
         if($amount <= 0){
             resolve(CourseRepository::class)->addStudentToCourse($course,$user);
-            newFeedbackes();
+            newFeedbacks();
             return redirect($course->path());
         }
         PaymentService::generate($course,$user,$amount);
@@ -160,15 +160,15 @@ class CourseController extends Controller
     private function courseCanBePurchased(Course $course)
     {
         if ($course->type == CourseRepository::TYPE_FREE) {
-            newFeedbackes('نا موفق', 'این دوره قابل خریداری نیست', 'error');
+            newFeedbacks('نا موفق', 'این دوره قابل خریداری نیست', 'error');
             return false;
         }
         if ($course->status == CourseRepository::STATUS_LOCKED) {
-            newFeedbackes('نا موفق', 'این دوره قابل خریداری نیست', 'error');
+            newFeedbacks('نا موفق', 'این دوره قابل خریداری نیست', 'error');
             return false;
         };
         if ($course->confirmation_status != CourseRepository::CONFIRMATION_STATUS_ACCEPTED) {
-            newFeedbackes('نا موفق', 'این دوره قابل خریداری نیست', 'error');
+            newFeedbacks('نا موفق', 'این دوره قابل خریداری نیست', 'error');
             return false;
         };
 
@@ -178,12 +178,12 @@ class CourseController extends Controller
     private function authUserCanPurchaseCourse(Course $course)
     {
         if (auth()->id() == $course->teacher_id) {
-            newFeedbackes('نا موفق', 'شما مدرس این دوره هستید', 'error');
+            newFeedbacks('نا موفق', 'شما مدرس این دوره هستید', 'error');
             return false;
         }
 
         if (auth()->user()->hasAccessToCourse($course)) {
-            newFeedbackes('نا موفق', 'شما به دوره دسترسی دارید', 'error');
+            newFeedbacks('نا موفق', 'شما به دوره دسترسی دارید', 'error');
             return false;
         }
 

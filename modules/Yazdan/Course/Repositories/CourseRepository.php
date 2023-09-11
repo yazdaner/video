@@ -3,7 +3,6 @@
 namespace Yazdan\Course\Repositories;
 
 use Illuminate\Support\Str;
-use Yazdan\Course\App\Http\Requests\CourseRequest;
 use Yazdan\Course\App\Models\Course;
 use Yazdan\Course\App\Models\Lesson;
 
@@ -35,6 +34,17 @@ class CourseRepository
     public static function findById($id)
     {
         return Course::find($id);
+    }
+
+
+    public static function getAll(string $status = null)
+    {
+        $query = Course::query();
+        if ($status) $query->where("confirmation_status", $status);
+
+        return $query
+            ->latest()
+            ->get();
     }
 
     public static function findBySlug($slug)

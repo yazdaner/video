@@ -21,7 +21,7 @@ class PaymentController extends Controller
 
         // Error
         if (is_null($payment)) {
-            newFeedbackes('نا موفق', 'تراکنش یافت نشد', 'error');
+            newFeedbacks('نا موفق', 'تراکنش یافت نشد', 'error');
             return redirect('/');
         };
 
@@ -30,12 +30,12 @@ class PaymentController extends Controller
         if (is_array($result)) {
             // Error
             $repository->changeStatus($payment->id, $repository::CONFIRMATION_STATUS_FAIL);
-            newFeedbackes('نا موفق', $result['message'], 'error');
+            newFeedbacks('نا موفق', $result['message'], 'error');
         } else {
             // Success
             event(new PaymentWasSuccessful($payment));
             $repository->changeStatus($payment->id, $repository::CONFIRMATION_STATUS_SUCCESS);
-            newFeedbackes('عملیات موفق', 'پرداخت با موفقیت انجام شد', 'success');
+            newFeedbacks('عملیات موفق', 'پرداخت با موفقیت انجام شد', 'success');
         }
 
         return redirect()->to($payment->paymentable->path());

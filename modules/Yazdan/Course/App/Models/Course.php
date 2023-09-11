@@ -59,11 +59,6 @@ class Course extends Model
         }
     }
 
-    public function discountAmount()
-    {
-        // todo
-        return 0;
-    }
 
     public function DiscountPercent()
     {
@@ -71,9 +66,19 @@ class Course extends Model
         return 0;
     }
 
+
+    public function discountAmount()
+    {
+        // todo
+        return 400000;
+    }
+
+
     public function finalPrice()
     {
-        return $this->price - $this->discountAmount();
+        $amount = $this->price - $this->discountAmount();
+        $amount = ($amount <= 0) ? 0 : $amount;
+        return $amount;
     }
 
     public function getFormattedDurationAttribute()

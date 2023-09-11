@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c52e929b921e4429ef1b4cf982ff3a94",
+    "content-hash": "b00381e990ad54adc4b916494d858751",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5865,6 +5865,31 @@
             }
         },
         {
+            "name": "yazdan/discount",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Discount",
+                "reference": "34301d2206761a2efc9bd670ba924416c4d3e186"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Discount\\App\\Providers\\DiscountServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Discount\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/front",
             "version": "dev-master",
             "dist": {
@@ -9132,6 +9157,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "yazdan/common": 20,
+        "yazdan/discount": 20,
         "yazdan/front": 20,
         "yazdan/payment": 20
     },
