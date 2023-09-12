@@ -2,15 +2,17 @@
 
 namespace Yazdan\Course\App\Models;
 
+use Illuminate\Validation\Rule;
 use Yazdan\User\App\Models\User;
 use Yazdan\Media\App\Models\Media;
-use Illuminate\Validation\Rule;
-use Illuminate\Database\Eloquent\Model;
-use Yazdan\Media\Services\ImageFileService;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Yazdan\Category\App\Models\Category;
-use Yazdan\Course\Repositories\CourseRepository;
 use Yazdan\Payment\App\Models\Payment;
+use Illuminate\Database\Eloquent\Model;
+use Yazdan\Category\App\Models\Category;
+use Yazdan\Media\Services\ImageFileService;
+use Yazdan\Discount\Services\DiscountService;
+use Yazdan\Course\Repositories\CourseRepository;
+use Yazdan\Discount\Repositories\DiscountRepository;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Model
 {
@@ -59,24 +61,28 @@ class Course extends Model
         }
     }
 
-
-    public function DiscountPercent()
+    public function getDiscountPercent()
     {
-        // todo
-        return 0;
+        $discountRepo = new DiscountRepository();
+        $percent = 0;
+        $specificDiscount = $discountRepo->getCourseBiggerDiscount($this->id);
+        if ($specificDiscount) $percent = $specificDiscount->percent;
+
+        $globalDiscount = $discountRepo->getGlobalBiggerDiscount();
+        if ($globalDiscount && $globalDiscount->percent > $percent) $percent = $globalDiscount->percent;
+        return $percent;
     }
 
 
-    public function discountAmount()
+    public function getDiscountAmount()
     {
-        // todo
-        return 400000;
+        return DiscountService::calculateDiscountAmount($this->price, $this->getDiscountPercent());
     }
 
 
     public function finalPrice()
     {
-        $amount = $this->price - $this->discountAmount();
+        $amount = $this->price - $this->getDiscountAmount();
         $amount = ($amount <= 0) ? 0 : $amount;
         return $amount;
     }
@@ -106,7 +112,10 @@ class Course extends Model
 
     public function payments()
     {
-        return $this->morphMany(Payment::class,'paymentable');
+        return $this->morphMany(Payment::class, "paymentable");
     }
-
+    public function discounts()
+    {
+        return $this->morphToMany(Discount::class, "discountable");
+    }
 }

@@ -222,12 +222,12 @@
                     </tr>
                     <tr>
                         <th>درصد تخفیف</th>
-                        <td><span id="discountPercent" data-value="{{$course->discountPercent()}}">{{$course->discountPercent()}}</span>%</td>
+                        <td><span id="getDiscountPercent" data-value="{{$course->getDiscountPercent()}}">{{$course->getDiscountPercent()}}</span>%</td>
                     </tr>
                     <tr>
                         <th> مبلغ تخفیف</th>
                         <td class="text-red"><span
-                                id="discountAmount" data-value="{{$course->discountAmount()}}">{{$course->discountAmount()}}</span> تومان
+                                id="getDiscountAmount" data-value="{{$course->getDiscountAmount()}}">{{$course->getDiscountAmount()}}</span> تومان
                         </td>
                     </tr>
                     <tr>

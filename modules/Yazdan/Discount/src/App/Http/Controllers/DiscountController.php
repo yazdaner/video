@@ -3,8 +3,10 @@
 namespace Yazdan\Discount\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Yazdan\Course\App\Models\Course;
 use Yazdan\Discount\App\Models\Discount;
 use Yazdan\Common\Responses\AjaxResponses;
+use Yazdan\Discount\Services\DiscountService;
 use Yazdan\Course\Repositories\CourseRepository;
 use Yazdan\Discount\Repositories\DiscountRepository;
 use Yazdan\Discount\App\Http\Requests\DiscountRequest;
@@ -54,5 +56,25 @@ class DiscountController extends Controller
 
         $discount->delete();
         return AjaxResponses::SuccessResponses();
+    }
+
+    public function check($code, Course $course)
+    {
+        $discount = DiscountRepository::getValidDiscountByCode($code, $course->id);
+        if ($discount){
+            $discountPercent = $discount->percent;
+            $discountAmount = DiscountService::calculateDiscountAmount($course->price, $discountPercent);
+            $response = [
+                "status" => "valid",
+                "payableAmount" => $course->price - $discountAmount,
+                "discountAmount" => $discountAmount,
+                "discountPercent" => $discountPercent
+            ];
+            return response()->json($response);
+        }
+
+        return response()->json([
+            "status" => "invalid"
+        ])->setStatusCode(422);
     }
 }
