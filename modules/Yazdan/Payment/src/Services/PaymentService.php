@@ -8,7 +8,7 @@ use Yazdan\Payment\Repositories\PaymentRepository;
 
 class PaymentService {
 
-    public static function generate($paymentable,User $user,$amount)
+    public static function generate($paymentable,User $user,$amount,$discounts = [])
     {
 
         if($amount <= 0 || is_null($paymentable->id) || is_null($user->id) ) return false;
@@ -41,7 +41,7 @@ class PaymentService {
             'seller_percent' => $seller_percent,
             'seller_share' => $seller_share,
             'site_share' => $site_share,
-        ]);
+        ], $discounts);
     }
 
 }

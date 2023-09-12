@@ -66,7 +66,7 @@ class DiscountController extends Controller
             $discountAmount = DiscountService::calculateDiscountAmount($course->finalPrice(), $discountPercent);
             $response = [
                 "status" => "valid",
-                "payableAmount" => $course->price - $discountAmount,
+                "payableAmount" => $course->finalPrice() - $discountAmount,
                 "discountAmount" => $discountAmount,
                 "discountPercent" => $discountPercent
             ];

@@ -222,20 +222,18 @@
                         </tr>
                         <tr>
                             <th>درصد تخفیف</th>
-                            <td>
-                                <span id="discountPercent">{{$course->getDiscountPercent()}}</span> %
-                            </td>
+                            <td><span id="discountPercent" data-value="{{ $course->getDiscountPercent()  }}">{{ $course->getDiscountPercent() }}</span>%</td>
                         </tr>
                         <tr>
                             <th> مبلغ تخفیف</th>
-                            <td class="text-red"><span id="discountAmount">{{number_format($course->getDiscountAmount())}}</span> تومان
+                            <td class="text-red"><span
+                                    id="discountAmount" data-value="{{ $course->getDiscountAmount()  }}"> {{ number_format($course->getDiscountAmount()) }}</span> تومان
                             </td>
                         </tr>
                         <tr>
                             <th> قابل پرداخت</th>
-                            <td class="text-green"><span id="payableAmount">
-                                {{number_format($course->finalPrice())}}
-                                </span> تومان
+                            <td class="text-green"><span
+                                    id="payableAmount" data-value="{{ $course->finalPrice()  }}">{{number_format($course->finalPrice())}}</span> تومان
                             </td>
                         </tr>
                     </tbody>
@@ -268,9 +266,9 @@
         $("#response").text("")
         $.get(url.replace("code", code))
             .done(function (data) {
-                $("#discountPercent").text(data.discountPercent)
-                $("#discountAmount").text(data.discountAmount)
-                $("#payableAmount").text(data.payableAmount)
+                    $("#discountPercent").text( parseInt($("#discountPercent").attr("data-value")) +  data.discountPercent)
+                    $("#discountAmount").text(parseInt($("#discountAmount").attr("data-value")) + data.discountAmount)
+                    $("#payableAmount").text(parseInt($("#payableAmount").attr("data-value")) - data.discountAmount)
                 $("#response").text("کد تخفیف با موفقیت اعمال شد.").removeClass("text-red").addClass("text-green")
             })
             .fail(function (data) {

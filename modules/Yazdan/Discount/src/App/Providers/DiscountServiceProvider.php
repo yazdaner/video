@@ -6,13 +6,14 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Yazdan\Discount\App\Models\Discount;
 use Yazdan\Discount\App\Policies\DiscountPolicy;
+use Yazdan\Discount\App\Providers\EventServiceProvider;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
 class DiscountServiceProvider extends ServiceProvider
 {
     public function register()
     {
-
+        $this->app->register(EventServiceProvider::class);
         Route::middleware('web')
             ->group(__DIR__ . '/../../Routes/discount_routes.php');
 

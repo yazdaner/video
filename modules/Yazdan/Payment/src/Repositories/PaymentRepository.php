@@ -19,9 +19,9 @@ class PaymentRepository
         $this->query = Payment::query();
     }
 
-    public function store($data)
+    public function store($data, $discounts = [])
     {
-        return Payment::create([
+        $payment = Payment::create([
             'user_id' => $data['user_id'],
             'paymentable_id' => $data['paymentable_id'],
             'paymentable_type' => $data['paymentable_type'],
@@ -34,6 +34,12 @@ class PaymentRepository
             'site_share' => $data['site_share'],
 
         ]);
+        foreach ($discounts as $discount) $discountIds[] = $discount->id;
+
+        if (isset($discountIds))
+            $payment->discounts()->sync($discountIds);
+
+        return $payment;
     }
 
     public function findByInvoiceId($invoiceId)
