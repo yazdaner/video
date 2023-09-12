@@ -147,7 +147,7 @@ class CourseController extends Controller
         }
 
         $user = auth()->user();
-        $amount = $course->finalPrice();
+        $amount = $course->finalPrice(request()->code);
         if($amount <= 0){
             resolve(CourseRepository::class)->addStudentToCourse($course,$user);
             newFeedbacks();

@@ -80,12 +80,19 @@ class Course extends Model
     }
 
 
-    public function finalPrice()
+
+    public function finalPrice($code = null)
     {
-        $amount = $this->price - $this->getDiscountAmount();
-        $amount = ($amount <= 0) ? 0 : $amount;
+        $amount =  $this->price - $this->getDiscountAmount();
+        if ($code) {
+            $discount = DiscountRepository::getValidDiscountByCode($code, $this->id);
+            if ($discount) {
+                $amount = $amount - DiscountService::calculateDiscountAmount($amount, $discount->percent);
+            }
+        }
         return $amount;
     }
+
 
     public function getFormattedDurationAttribute()
     {

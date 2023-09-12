@@ -2,6 +2,7 @@
 namespace Yazdan\Discount\App\Models;
 
 use Yazdan\Course\App\Models\Course;
+use Yazdan\Payment\App\Models\Payment;
 use Illuminate\Database\Eloquent\Model;
 
 class Discount extends Model
@@ -14,5 +15,10 @@ class Discount extends Model
     public function courses()
     {
         return $this->morphedByMany(Course::class, "discountable");
+    }
+
+    public function payments()
+    {
+        return $this->belongsToMany(Payment::class, "discount_payment");
     }
 }

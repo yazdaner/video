@@ -31,7 +31,7 @@
                     <div class="product-info-box">
 
                         @if (auth()->check() && auth()->id() == $course->teacher_id)
-                        <p class="mycourse ">شما مدرس این دوره هستید</p>
+                        <p class="mycourse ">شما مآیتم این دوره هستید</p>
                         @elseif (auth()->check() && auth()->user()->hasAccessToCourse($course))
                         <p class="mycourse">شما این دوره رو خریداری کرده اید</p>
 
@@ -118,7 +118,7 @@
                                 <span class="vlaue">-</span>
                             </div>
                             <div class="meta-info-unit four">
-                                <span class="title">مدرس دوره : </span>
+                                <span class="title">مآیتم دوره : </span>
                                 <span class="vlaue">{{$course->teacher->name}}</span>
                             </div>
                             <div class="meta-info-unit five">
@@ -170,8 +170,8 @@
                 </div>
                 @endif
                 @if (isset($lesson->media))
-                    <a href="{{$lesson->media->download()}}" class="episode-download">دانلود این قسمت (قسمت
-                        {{$lesson->priority}})</a>
+                <a href="{{$lesson->media->download()}}" class="episode-download">دانلود این قسمت (قسمت
+                    {{$lesson->priority}})</a>
                 @endif
 
                 <div class="course-description">
@@ -210,32 +210,34 @@
                     <input type="text" name="code" id="code" class="txt" placeholder="کد تخفیف را وارد کنید">
                     <p id="response"></p>
                 </div>
-                <button type="button" class="btn i-t">اعمال
+                <button type="button" class="btn i-t" onclick="checkDiscountCode()">اعمال
                     <img src="/img/loading.gif" alt="" id="loading" class="loading d-none">
                 </button>
 
                 <table class="table tabled text-center table-bordered table-striped">
                     <tbody>
-                    <tr>
-                        <th>قیمت کل دوره</th>
-                        <td> {{number_format($course->price)}} تومان</td>
-                    </tr>
-                    <tr>
-                        <th>درصد تخفیف</th>
-                        <td><span id="getDiscountPercent" data-value="{{$course->getDiscountPercent()}}">{{$course->getDiscountPercent()}}</span>%</td>
-                    </tr>
-                    <tr>
-                        <th> مبلغ تخفیف</th>
-                        <td class="text-red"><span
-                                id="getDiscountAmount" data-value="{{$course->getDiscountAmount()}}">{{$course->getDiscountAmount()}}</span> تومان
-                        </td>
-                    </tr>
-                    <tr>
-                        <th> قابل پرداخت</th>
-                        <td class="text-green"><span
-                                id="payableAmount" data-value="">{{number_format($course->finalPrice())}}</span> تومان
-                        </td>
-                    </tr>
+                        <tr>
+                            <th>قیمت کل دوره</th>
+                            <td> {{number_format($course->price)}} تومان</td>
+                        </tr>
+                        <tr>
+                            <th>درصد تخفیف</th>
+                            <td>
+                                <span id="discountPercent">{{$course->getDiscountPercent()}}</span> %
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> مبلغ تخفیف</th>
+                            <td class="text-red"><span id="discountAmount">{{number_format($course->getDiscountAmount())}}</span> تومان
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> قابل پرداخت</th>
+                            <td class="text-green"><span id="payableAmount">
+                                {{number_format($course->finalPrice())}}
+                                </span> تومان
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <button type="submit" class="btn btn i-t ">پرداخت آنلاین</button>
@@ -257,4 +259,26 @@
 @endsection
 @section('js')
 <script src="/js/modal.js"></script>
+<script>
+    function checkDiscountCode(){
+
+        const code =  $("#code").val();
+        const url = "{{ route("admin.discounts.check", ["code", $course->id]) }}";
+        $("#loading").addClass("d-none")
+        $("#response").text("")
+        $.get(url.replace("code", code))
+            .done(function (data) {
+                $("#discountPercent").text(data.discountPercent)
+                $("#discountAmount").text(data.discountAmount)
+                $("#payableAmount").text(data.payableAmount)
+                $("#response").text("کد تخفیف با موفقیت اعمال شد.").removeClass("text-red").addClass("text-green")
+            })
+            .fail(function (data) {
+                $("#response").text("کد وارده شده برای این آیتم معتبر نیست.").removeClass("text-green").addClass("text-red")
+            })
+            .always(function () {
+                $("#loading").addClass("d-none")
+            });
+    }
+</script>
 @endsection

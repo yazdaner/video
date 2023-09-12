@@ -63,7 +63,7 @@ class DiscountController extends Controller
         $discount = DiscountRepository::getValidDiscountByCode($code, $course->id);
         if ($discount){
             $discountPercent = $discount->percent;
-            $discountAmount = DiscountService::calculateDiscountAmount($course->price, $discountPercent);
+            $discountAmount = DiscountService::calculateDiscountAmount($course->finalPrice(), $discountPercent);
             $response = [
                 "status" => "valid",
                 "payableAmount" => $course->price - $discountAmount,
