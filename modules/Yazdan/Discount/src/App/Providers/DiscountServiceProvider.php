@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Yazdan\Discount\App\Models\Discount;
 use Yazdan\Discount\App\Policies\DiscountPolicy;
-use Yazdan\Discount\App\Providers\EventServiceProvider;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
 class DiscountServiceProvider extends ServiceProvider

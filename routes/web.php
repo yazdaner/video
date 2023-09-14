@@ -1,9 +1,8 @@
 <?php
 
-use Yazdan\User\App\Models\User;
-use Yazdan\Payment\Gateways\Gateway;
 use Yazdan\Course\App\Models\Course;
 use Yazdan\RolePermissions\Repositories\RoleRepository;
+use Yazdan\User\App\Models\User;
 
 
 Route::get('/l', function () {

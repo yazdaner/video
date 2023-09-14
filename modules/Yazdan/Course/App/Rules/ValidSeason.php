@@ -4,7 +4,6 @@ namespace Yazdan\Course\App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Yazdan\Course\Repositories\LessonRepository;
-use Yazdan\User\Repositories\UserRepository;
 
 class ValidSeason implements Rule
 {

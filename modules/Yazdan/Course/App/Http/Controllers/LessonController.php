@@ -3,15 +3,14 @@
 namespace Yazdan\Course\App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Yazdan\Course\App\Models\Course;
+use Illuminate\Http\Request;
 use Yazdan\Common\Responses\AjaxResponses;
-use Yazdan\Media\Services\MediaFileService;
-use Yazdan\Course\Repositories\LessonRepository;
 use Yazdan\Course\App\Http\Requests\LessonRequest;
-use Yazdan\Course\App\Models\Lesson;
+use Yazdan\Course\App\Models\Course;
 use Yazdan\Course\Repositories\CourseRepository;
+use Yazdan\Course\Repositories\LessonRepository;
+use Yazdan\Media\Services\MediaFileService;
 
 class LessonController extends Controller
 {

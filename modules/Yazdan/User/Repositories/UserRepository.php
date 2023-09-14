@@ -1,10 +1,10 @@
 <?php
 namespace Yazdan\User\Repositories;
 
-use Yazdan\User\App\Models\User;
 use Yazdan\Media\Services\MediaFileService;
-use Yazdan\RolePermissions\Repositories\RoleRepository;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\RolePermissions\Repositories\RoleRepository;
+use Yazdan\User\App\Models\User;
 
 class UserRepository
 {

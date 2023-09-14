@@ -3,13 +3,12 @@
 namespace Yazdan\Payment\App\Providers;
 
 use Illuminate\Support\Facades\Gate;
-use Yazdan\Payment\Gateways\Gateway;
 use Illuminate\Support\Facades\Route;
-use Yazdan\Payment\App\Models\Payment;
 use Illuminate\Support\ServiceProvider;
+use Yazdan\Payment\App\Models\Payment;
 use Yazdan\Payment\App\Policies\PaymentPolicy;
+use Yazdan\Payment\Gateways\Gateway;
 use Yazdan\Payment\Gateways\Zarinpal\ZarinpalAdaptor;
-use Yazdan\Payment\App\Providers\EventServiceProvider;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
 class PaymentServiceProvider extends ServiceProvider

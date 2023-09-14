@@ -2,9 +2,7 @@
 namespace Yazdan\Media\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
-use Yazdan\Media\Services\ImageFileService;
 use Yazdan\Media\Services\MediaFileService;
 
 class Media extends Model

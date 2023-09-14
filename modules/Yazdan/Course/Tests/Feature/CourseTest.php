@@ -2,11 +2,9 @@
 
 namespace Yazdan\Course\Tests\Feature;
 
-use Tests\TestCase;
-use Yazdan\Course\App\Models\Course;
-use Yazdan\Course\Tests\Helper\CourseHelperTest;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Tests\TestCase;
+use Yazdan\Course\Tests\Helper\CourseHelperTest;
 
 class CourseTest extends TestCase
 {

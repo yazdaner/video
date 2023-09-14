@@ -3,11 +3,9 @@
 namespace Yazdan\User\App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Yazdan\User\App\Mail\VerifyCodeMail;
 use Illuminate\Notifications\Notification;
+use Yazdan\User\App\Mail\VerifyCodeMail;
 use Yazdan\User\Services\VerifyMailService;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 
 class VerifyMailNotification extends Notification
 {

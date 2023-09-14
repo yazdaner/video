@@ -2,15 +2,15 @@
 
 namespace Yazdan\User\App\Providers;
 
-use Yazdan\User\App\Models\User;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\App\Http\Middleware\StoreUserIp;
+use Yazdan\User\App\Models\User;
 use Yazdan\User\App\Policies\UserPolicy;
 use Yazdan\User\Database\Seeders\UsersSeeder;
-use Yazdan\User\App\Http\Middleware\StoreUserIp;
-use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
 class UserServiceProvider extends ServiceProvider
 {

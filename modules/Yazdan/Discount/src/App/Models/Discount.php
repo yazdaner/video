@@ -1,9 +1,9 @@
 <?php
 namespace Yazdan\Discount\App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Yazdan\Course\App\Models\Course;
 use Yazdan\Payment\App\Models\Payment;
-use Illuminate\Database\Eloquent\Model;
 
 class Discount extends Model
 {

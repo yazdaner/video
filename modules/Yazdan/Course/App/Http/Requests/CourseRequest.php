@@ -1,9 +1,9 @@
 <?php
 namespace Yazdan\Course\App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Yazdan\Course\App\Rules\ValidTeacher;
-use Illuminate\Foundation\Http\FormRequest;
 use Yazdan\Course\Repositories\CourseRepository;
 
 class CourseRequest extends FormRequest

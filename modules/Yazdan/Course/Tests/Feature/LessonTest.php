@@ -2,13 +2,13 @@
 
 namespace Yazdan\Course\Tests\Feature;
 
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
+use Yazdan\Course\App\Models\Lesson;
 use Yazdan\Course\Repositories\LessonRepository;
 use Yazdan\Course\Tests\Helper\CourseHelperTest;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Yazdan\Course\App\Models\Lesson;
 
 class LessonTest extends TestCase
 {

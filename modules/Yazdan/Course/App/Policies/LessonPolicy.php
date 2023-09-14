@@ -2,11 +2,11 @@
 
 namespace Yazdan\Course\App\Policies;
 
-use Yazdan\User\App\Models\User;
-use Yazdan\Course\App\Models\Lesson;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Yazdan\Course\App\Models\Course;
+use Yazdan\Course\App\Models\Lesson;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\App\Models\User;
 
 class LessonPolicy
 {

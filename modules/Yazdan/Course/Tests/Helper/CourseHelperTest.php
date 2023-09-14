@@ -2,19 +2,19 @@
 
 namespace Yazdan\Course\Tests\Helper;
 
-use Yazdan\User\App\Models\User;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Yazdan\Category\App\Models\Category;
 use Yazdan\Course\App\Models\Course;
 use Yazdan\Course\App\Models\Lesson;
 use Yazdan\Course\App\Models\Season;
-use Illuminate\Support\Facades\Storage;
-use Yazdan\Category\App\Models\Category;
-use Yazdan\Media\Services\MediaFileService;
-use Illuminate\Foundation\Testing\WithFaker;
 use Yazdan\Course\Repositories\CourseRepository;
 use Yazdan\Course\Repositories\LessonRepository;
-use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\Media\Services\MediaFileService;
 use Yazdan\RolePermissions\Database\Seeders\RolePermissionsSeeder;
+use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\App\Models\User;
 
 
 trait CourseHelperTest

@@ -3,8 +3,6 @@
 namespace Yazdan\Course\App\Listeners;
 
 use Yazdan\Course\App\Models\Course;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Yazdan\Course\Repositories\CourseRepository;
 
 class RegisterUserInTheCourse

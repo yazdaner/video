@@ -2,17 +2,15 @@
 
 namespace Yazdan\Course\App\Models;
 
-use Illuminate\Validation\Rule;
-use Yazdan\User\App\Models\User;
-use Yazdan\Media\App\Models\Media;
-use Yazdan\Payment\App\Models\Payment;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Category\App\Models\Category;
-use Yazdan\Media\Services\ImageFileService;
-use Yazdan\Discount\Services\DiscountService;
 use Yazdan\Course\Repositories\CourseRepository;
 use Yazdan\Discount\Repositories\DiscountRepository;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Yazdan\Discount\Services\DiscountService;
+use Yazdan\Media\App\Models\Media;
+use Yazdan\Payment\App\Models\Payment;
+use Yazdan\User\App\Models\User;
 
 class Course extends Model
 {

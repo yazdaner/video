@@ -2,9 +2,9 @@
 
 namespace Yazdan\User\Database\Factories;
 
-use Yazdan\User\App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Yazdan\User\App\Models\User;
 
 class UserFactory extends Factory
 {

@@ -3,10 +3,10 @@
 namespace Yazdan\Category\Tests\Helper;
 
 
-use Yazdan\User\App\Models\User;
 use Yazdan\Category\App\Models\Category;
 use Yazdan\RolePermissions\Database\Seeders\RolePermissionsSeeder;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\App\Models\User;
 
 trait CategoryHelperTest
 {

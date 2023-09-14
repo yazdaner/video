@@ -2,19 +2,17 @@
 
 namespace Yazdan\User\App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Yazdan\User\App\Models\User;
-use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Role;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Media\Services\MediaFileService;
-use Yazdan\User\Repositories\UserRepository;
-use Yazdan\Course\Repositories\CourseRepository;
-use Yazdan\User\App\Http\Requests\AddRoleRequest;
-use Yazdan\User\App\Http\Requests\UpdateUserRequest;
 use Yazdan\RolePermissions\Repositories\RoleRepository;
+use Yazdan\User\App\Http\Requests\AddRoleRequest;
 use Yazdan\User\App\Http\Requests\UpdateProfileRequest;
 use Yazdan\User\App\Http\Requests\UpdateUserPhotoRequest;
+use Yazdan\User\App\Http\Requests\UpdateUserRequest;
+use Yazdan\User\App\Models\User;
+use Yazdan\User\Repositories\UserRepository;
 
 class UserController extends Controller
 {

@@ -1,9 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Yazdan\User\App\Models\User;
 use Yazdan\User\Services\VerifyMailService;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class VerifyMailServiceTest extends TestCase
 {

@@ -2,8 +2,8 @@
 
 namespace Yazdan\RolePermissions\Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use Yazdan\RolePermissions\Repositories\RoleRepository;
 use Yazdan\RolePermissions\Tests\Helper\RoleHelperTest;
 

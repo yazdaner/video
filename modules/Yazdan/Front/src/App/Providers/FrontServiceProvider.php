@@ -2,12 +2,10 @@
 
 namespace Yazdan\Front\App\Providers;
 
-use Closure;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Yazdan\Course\Repositories\CourseRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
+use Yazdan\Course\Repositories\CourseRepository;
 
 class FrontServiceProvider extends ServiceProvider
 {

@@ -3,12 +3,9 @@
 namespace Yazdan\User\App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Yazdan\User\App\Mail\VerifyCodeMail;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Yazdan\User\App\Mail\ResetPasswordCodeMail;
 use Yazdan\User\Services\VerifyMailService;
-use Illuminate\Notifications\Messages\MailMessage;
 
 class ResetPasswordEmailCodeNotification extends Notification
 {

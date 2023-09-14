@@ -2,10 +2,10 @@
 
 namespace Yazdan\User\App\Http\Requests;
 
-use Yazdan\User\App\Rules\ValidPassword;
 use Illuminate\Foundation\Http\FormRequest;
-use Yazdan\User\App\Rules\ValidMobile;
 use Illuminate\Validation\Rule;
+use Yazdan\User\App\Rules\ValidMobile;
+use Yazdan\User\App\Rules\ValidPassword;
 use Yazdan\User\Repositories\UserRepository;
 
 class UpdateUserRequest extends FormRequest

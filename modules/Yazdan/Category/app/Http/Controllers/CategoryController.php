@@ -3,10 +3,10 @@
 namespace Yazdan\Category\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Category\App\Http\Requests\CategoryRequest;
 use Yazdan\Category\App\Models\Category;
 use Yazdan\Category\Repositories\CategoryRepository;
+use Yazdan\Common\Responses\AjaxResponses;
 
 class CategoryController extends Controller
 {

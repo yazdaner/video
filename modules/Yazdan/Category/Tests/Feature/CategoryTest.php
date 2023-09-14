@@ -2,8 +2,8 @@
 
 namespace Yazdan\Category\Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use Yazdan\Category\Tests\Helper\CategoryHelperTest;
 
 class CategoryTest extends TestCase

@@ -2,16 +2,14 @@
 
 namespace Yazdan\Course\Database\Factories;
 
-use Yazdan\User\App\Models\User;
-use Illuminate\Http\Testing\File;
-use Illuminate\Http\UploadedFile;
-use Yazdan\Course\App\Models\Course;
-use Illuminate\Support\Facades\Storage;
-use Yazdan\Category\App\Models\Category;
-use Yazdan\Media\Services\MediaFileService;
-use Yazdan\Course\Repositories\CourseRepository;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
+use Yazdan\Category\App\Models\Category;
+use Yazdan\Course\App\Models\Course;
+use Yazdan\Course\Repositories\CourseRepository;
+use Yazdan\Media\Services\MediaFileService;
 use Yazdan\RolePermissions\Repositories\RoleRepository;
+use Yazdan\User\App\Models\User;
 
 class CourseFactory extends Factory
 {

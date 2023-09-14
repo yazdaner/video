@@ -1,11 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Yazdan\Course\App\Models\Season;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Yazdan\Course\Repositories\LessonRepository;
-use Yazdan\Course\Repositories\SeasonRepository;
 
 class CreateLessonsTable extends Migration
 {

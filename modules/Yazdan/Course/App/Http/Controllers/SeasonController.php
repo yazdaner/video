@@ -4,13 +4,11 @@ namespace Yazdan\Course\App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use Yazdan\Course\App\Models\Course;
-use Yazdan\Course\App\Models\Season;
 use Yazdan\Common\Responses\AjaxResponses;
+use Yazdan\Course\App\Http\Requests\SeasonRequest;
+use Yazdan\Course\App\Models\Season;
 use Yazdan\Course\Repositories\CourseRepository;
 use Yazdan\Course\Repositories\SeasonRepository;
-use Yazdan\Course\App\Http\Requests\SeasonRequest;
-use Yazdan\Course\App\Policies\SeasonPolicy;
 
 class SeasonController extends Controller
 {

@@ -3,10 +3,10 @@
 namespace Yazdan\RolePermissions\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Yazdan\RolePermissions\Repositories\RoleRepository;
+use Spatie\Permission\Models\Role;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\RolePermissions\Repositories\RoleRepository;
 
 class RolePermissionsSeeder extends Seeder
 {

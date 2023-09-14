@@ -2,11 +2,11 @@
 
 namespace Yazdan\RolePermissions\Tests\Helper;
 
-use Yazdan\User\App\Models\User;
-use Spatie\Permission\Models\Role;
 use Illuminate\Foundation\Testing\WithFaker;
-use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Spatie\Permission\Models\Role;
 use Yazdan\RolePermissions\Database\Seeders\RolePermissionsSeeder;
+use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\App\Models\User;
 
 trait RoleHelperTest
 {

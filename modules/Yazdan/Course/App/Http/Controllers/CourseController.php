@@ -2,19 +2,18 @@
 
 namespace Yazdan\Course\App\Http\Controllers;
 
-use Yazdan\Payment\Gateways\Gateway;
 use App\Http\Controllers\Controller;
-use Yazdan\Course\App\Models\Course;
+use Yazdan\Category\Repositories\CategoryRepository;
 use Yazdan\Common\Responses\AjaxResponses;
-use Yazdan\Media\Services\MediaFileService;
-use Yazdan\Payment\Services\PaymentService;
-use Yazdan\User\Repositories\UserRepository;
+use Yazdan\Course\App\Http\Requests\CourseRequest;
+use Yazdan\Course\App\Models\Course;
 use Yazdan\Course\Repositories\CourseRepository;
 use Yazdan\Course\Repositories\LessonRepository;
-
-use Yazdan\Course\App\Http\Requests\CourseRequest;
-use Yazdan\Category\Repositories\CategoryRepository;
+use Yazdan\Media\Services\MediaFileService;
+use Yazdan\Payment\Gateways\Gateway;
+use Yazdan\Payment\Services\PaymentService;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\Repositories\UserRepository;
 
 class CourseController extends Controller
 {

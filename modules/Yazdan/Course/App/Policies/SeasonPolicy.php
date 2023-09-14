@@ -2,10 +2,10 @@
 
 namespace Yazdan\Course\App\Policies;
 
-use Yazdan\User\App\Models\User;
-use Yazdan\Course\App\Models\Season;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Yazdan\Course\App\Models\Season;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\App\Models\User;
 
 class SeasonPolicy
 {

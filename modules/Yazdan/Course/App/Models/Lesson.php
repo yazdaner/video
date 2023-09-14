@@ -2,10 +2,10 @@
 
 namespace Yazdan\Course\App\Models;
 
-use Yazdan\Media\App\Models\Media;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Course\Repositories\LessonRepository;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Yazdan\Media\App\Models\Media;
 
 class Lesson extends Model
 {

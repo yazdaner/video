@@ -1,10 +1,9 @@
 <?php
 
-use Yazdan\User\App\Models\User;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Yazdan\User\Repositories\UserRepository;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Yazdan\User\Repositories\UserRepository;
 
 class CreateUsersTable extends Migration
 {

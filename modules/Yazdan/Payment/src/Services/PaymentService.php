@@ -2,9 +2,9 @@
 
 namespace Yazdan\Payment\Services;
 
-use Yazdan\User\App\Models\User;
 use Yazdan\Payment\Gateways\Gateway;
 use Yazdan\Payment\Repositories\PaymentRepository;
+use Yazdan\User\App\Models\User;
 
 class PaymentService {
 

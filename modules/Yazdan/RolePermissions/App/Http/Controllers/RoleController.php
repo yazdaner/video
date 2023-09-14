@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\RolePermissions\App\Http\Requests\RoleRequest;
-use Yazdan\RolePermissions\Repositories\RoleRepository;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\RolePermissions\Repositories\RoleRepository;
 
 class RoleController extends Controller
 {

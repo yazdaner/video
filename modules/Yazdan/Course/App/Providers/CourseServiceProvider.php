@@ -3,11 +3,11 @@
 namespace Yazdan\Course\App\Providers;
 
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 use Yazdan\Course\App\Models\Course;
 use Yazdan\Course\App\Models\Lesson;
 use Yazdan\Course\App\Models\Season;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
 use Yazdan\Course\App\Policies\CoursePolicy;
 use Yazdan\Course\App\Policies\LessonPolicy;
 use Yazdan\Course\App\Policies\SeasonPolicy;

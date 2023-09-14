@@ -2,17 +2,16 @@
 
 namespace Yazdan\User\App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
-use Yazdan\Media\App\Models\Media;
-use Yazdan\Course\App\Models\Course;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Yazdan\User\App\Notifications\VerifyMailNotification;
-use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+use Yazdan\Course\App\Models\Course;
+use Yazdan\Media\App\Models\Media;
 use Yazdan\User\App\Notifications\ResetPasswordEmailCodeNotification;
+use Yazdan\User\App\Notifications\VerifyMailNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {

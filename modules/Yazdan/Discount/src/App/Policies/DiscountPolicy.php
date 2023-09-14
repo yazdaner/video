@@ -2,10 +2,9 @@
 
 namespace Yazdan\Discount\App\Policies;
 
-use Yazdan\User\App\Models\User;
-use Yazdan\Course\App\Models\Course;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\App\Models\User;
 
 class DiscountPolicy
 {

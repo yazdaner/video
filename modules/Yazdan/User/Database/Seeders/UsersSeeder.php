@@ -4,11 +4,7 @@ namespace Yazdan\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Yazdan\User\App\Models\User;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Yazdan\User\Repositories\UserRepository;
-use Yazdan\RolePermissions\Repositories\RoleRepository;
-use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
 class UsersSeeder extends Seeder
 {

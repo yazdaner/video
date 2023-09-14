@@ -2,10 +2,9 @@
 
 namespace Yazdan\RolePermissions\App\Policies;
 
-use Yazdan\User\App\Models\User;
-use Spatie\Permission\Models\Role;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\User\App\Models\User;
 
 class RolePermissionPolicy
 {

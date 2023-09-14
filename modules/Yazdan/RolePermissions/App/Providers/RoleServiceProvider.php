@@ -2,15 +2,14 @@
 
 namespace Yazdan\RolePermissions\App\Providers;
 
-use Gate;
-use Spatie\Permission\Models\Role;
 use Database\Seeders\DatabaseSeeder;
+use Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Yazdan\RolePermissions\Repositories\RoleRepository;
+use Spatie\Permission\Models\Role;
 use Yazdan\RolePermissions\App\Policies\RolePermissionPolicy;
-use Yazdan\RolePermissions\Repositories\PermissionRepository;
 use Yazdan\RolePermissions\Database\Seeders\RolePermissionsSeeder;
+use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
 class RoleServiceProvider extends ServiceProvider
 {

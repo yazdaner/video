@@ -3,8 +3,8 @@ namespace Yazdan\Home\App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
-use Yazdan\Dashboard\App\Models\Home;
 use Illuminate\Support\ServiceProvider;
+use Yazdan\Dashboard\App\Models\Home;
 use Yazdan\Dashboard\App\Policies\HomePolicy;
 
 class HomeServiceProvider extends ServiceProvider
