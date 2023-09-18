@@ -59,18 +59,6 @@ class Course extends Model
         }
     }
 
-    // public function getDiscountPercent()
-    // {
-    //     $discountRepo = new DiscountRepository();
-    //     $percent = 0;
-    //     $specificDiscount = $discountRepo->getCourseBiggerDiscount($this->id);
-    //     if ($specificDiscount) $percent = $specificDiscount->percent;
-
-    //     $globalDiscount = $discountRepo->getGlobalBiggerDiscount();
-    //     if ($globalDiscount && $globalDiscount->percent > $percent) $percent = $globalDiscount->percent;
-    //     return $percent;
-    // }
-
     public function getDiscount()
     {
         $discountRepo = new DiscountRepository();

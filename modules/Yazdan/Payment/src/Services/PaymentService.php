@@ -17,7 +17,8 @@ class PaymentService {
         $invoice_id = $gateway->request($amount,$paymentable->title);
 
         if(is_array($invoice_id)){
-            dd($invoice_id);
+            newFeedbacks('ناموفق',$invoice_id['message'],'error');
+            return back();
         }
 
         if(isset($paymentable->percent)){

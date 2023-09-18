@@ -12,7 +12,6 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
     Route::patch('courses/{course}/rejected',[CourseController::class,'rejected'])->name('courses.rejected');
     Route::get('courses/{course}/details',[CourseController::class,'details'])->name('courses.details');
     Route::get('courses/{course}/details',[CourseController::class,'details'])->name('courses.details');
-    Route::post('courses/{course}/buy',[CourseController::class,'buy'])->name('courses.buy');
 
 });
 
